@@ -58,11 +58,19 @@ function validatePasswordLength() {
 }
 
 function validatePasswordLength() {
-  var input = document.getElementById('password-length');
-  var value = parseInt(input.value);
-  if (value < 8) {
-    input.value = 8;
-  } else if (value > 32) {
-    input.value = 32;
-  }
+  const input = document.getElementById('password-length');
+  const value = parseInt(input.value);
+
+  const validate = () => {
+    if (value < 8) {
+      input.value = 8;
+    } else if (value > 32) {
+      input.value = 32;
+    } else {
+      // If the value is between 8 and 32, keep the original value
+      input.value = value;
+    }
+  };
+
+  setTimeout(validate, 500);
 }
